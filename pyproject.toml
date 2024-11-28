@@ -7,6 +7,14 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
+tinydb = "^4.8.2"
+streamlit = "^1.40.2"
+streamlit-aggrid = "^1.0.5"
+langchain-groq = "^0.2.1"
+pymupdf = "^1.24.14"
+fitz = "^0.0.1.dev2"
+pydantic = "^2.10.2"
+python-dotenv = "^1.0.1"
 
 
 [build-system]
