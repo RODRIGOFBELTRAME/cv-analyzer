@@ -10,6 +10,7 @@ python = "^3.13"
 tinydb = "^4.8.2"
 pydantic = "^2.10.2"
 streamlit = "^1.40.2"
+streamlit-aggrid = "^1.0.5"
 
 
 [build-system]
