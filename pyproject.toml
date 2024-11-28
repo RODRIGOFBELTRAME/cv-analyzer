@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "cv-analyzer"
+name = "analisador-curriculos"
 version = "0.1.0"
 description = ""
 authors = ["Carlos"]
@@ -7,14 +7,18 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-tinydb = "^4.8.2"
-streamlit = "^1.40.2"
+streamlit = "^1.37.1"
 streamlit-aggrid = "^1.0.5"
-langchain-groq = "^0.2.1"
-pymupdf = "^1.24.14"
-fitz = "^0.0.1.dev2"
-pydantic = "^2.10.2"
+pandas = "^2.2.2"
+tinydb = "^4.8.0"
+pydantic = "^2.8.2"
+google-api-python-client = "^2.142.0"
+google-auth-httplib2 = "^0.2.0"
+google-auth-oauthlib = "^1.2.1"
+langchain-groq = "^0.1.9"
 python-dotenv = "^1.0.1"
+fitz = "^0.0.1.dev2"
+pymupdf = "^1.24.9"
 
 
 [build-system]
