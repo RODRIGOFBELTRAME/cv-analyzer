@@ -12,12 +12,13 @@ creds = Credentials.from_authorized_user_file('token.json', SCOPES)
 service = build('drive', 'v3', credentials=creds)
 
 # ID da pasta que você deseja listar os arquivos
-folder_id = '1flYfkoDOelDkKuRYrOOtJUTq0hAKsyo1'
+folder_id = '1MYbG6OsGJZzTX15PNxfIwzzOzho82Vld'
 
 # Listar arquivos na pasta especificada pelo folder_id
 results = service.files().list(
     q=f"'{folder_id}' in parents", fields="files(id, name)"
 ).execute()
+
 
 # Obter a lista de arquivos
 files = results.get('files', [])
