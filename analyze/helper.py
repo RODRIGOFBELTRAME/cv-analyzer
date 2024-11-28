@@ -1,5 +1,5 @@
 import re, uuid, os
-import fitz
+import fitz 
 from models.analysis import Analysis
 
 def read_uploaded_file(file_path):

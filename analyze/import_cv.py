@@ -1,7 +1,7 @@
 import uuid
-from analyze.helper import get_pdf_paths, read_uploaded_file, extract_data_analysis
-from analyze.database import AnalyzeDatabase
-from analyze.ai import GroqClient
+from helper import get_pdf_paths, read_uploaded_file, extract_data_analysis
+from database import AnalyzeDatabase
+from ai import GroqClient
 from models.resum import Resum
 from models.file import File
 
