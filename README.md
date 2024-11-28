@@ -1,127 +1,138 @@
-# CV-Analyzer
-A CV analyzer, made for academic purposes
+# Overview
 
-# How to Configure
+This is a Python-based recruitment analysis system that uses various technologies to process resumes, extract relevant information, and provide a scoring system for candidate suitability. The system uses Google Drive for storing resumes and other files, and relies on a custom-built AI model to analyze resumes and provide insights.
 
-## Config Google Drive API Key
+---
+# How It Works
 
-First of all, you need to generate an Google Drive API Key. U can see how to in this link: `https://abrir.link/FppKf` 
-- In the scope phase, you don't need to configure authentication, this part will be managed by the application;
-- In the Step 9, select *Desktop App*
+1. The system uses Google Drive to store PDF files.
+2. Users upload CVs to Google Drive, which are then processed by the system.
+3. The system uses FitZ to read and extract text from the resumes.
+4. The extracted text is then analyzed by the GroqClient AI model, which provides insights and scores for each candidate.
+5. The scores are used to rank candidates and provide a dashboard for users to view resume data and scores.
+6. The system uses TinyDB to store resume data and other metadata.
 
-After that, U will need to change the *folder_id* at `drive/download_cv.py` 
+---
 
-U can see your *folder_id* in 
+## Getting Started
 
-![image](https://github.com/user-attachments/assets/5c3a7ea0-e083-48a2-ab35-0e6413cf195e)
+### Configure Google Drive API Key  
 
-**Important** All CVs need to be a PDF, otherwise, the app will not work
+First, you need to generate a Google Drive API Key. Follow the steps in this [guide](https://abrir.link/FppKf):  
+- In the **scope phase**, you don’t need to configure authentication. This part will be managed by the application.  
+- In **Step 9**, select **Desktop App**.  
 
-## Install Dependencies
+After that, update the `*folder_id*` in `drive/download_cv.py`.  
 
-This project is running in Python 3.11 or above. Some dependencies will not work in previous Python versions. If you don't want any bad circunstancies, please use Python 3.11.
+You can find your *folder_id* like this:  
 
-You will need Pip, if you don't have it. Please check the installation guide: `https://pip.pypa.io/en/stable/installation/`
+![image](https://github.com/user-attachments/assets/5c3a7ea0-e083-48a2-ab35-0e6413cf195e)  
 
-After you ensure that Pip is installed, please run
+**Important:** All CVs must be in PDF format. Other file types are not supported.  
 
+---
 
-```
-pip install requirements.txt
-```
+### Configure GROQ API Key  
 
+You also need a Groq API Key, which can be obtained [here](https://console.groq.com/keys).  
 
-This will install all the dependencies that are required for the CV-Analyzer works correctly.
-
-## Configure JOB and AI
-
-- [X] Config Google Drive API Key
-- [X] Install Dependencies
-
-First, run this command
-
+Next, create a `.env` file with the following structure:  
 
 ```
-python download_cv.py
-```
+GROQ_API_KEY='YOUR_API_KEY'
+```  
 
+**Ensure your *.gitignore* is properly configured to exclude `.env` files.**  
 
-This command will download all the CVs from your Google Drive Folder and send them to the `/currilos` folder.
+---
 
-#
+### Install Dependencies  
 
-Then, you need to create a job announcement in the `create_job.py` file, you have some variables to fill in
+This project requires **Python 3.11** or above. Dependencies may not work with earlier Python versions.  
 
-- *name* (job title)
-#
-- *activities* (what the employee will do)
-#
-- *prerequisites* (the minium requirements to have)
-#
-- *differentials* (what is nice to have)
-#
+If you don’t have Pip installed, refer to the [installation guide](https://pip.pypa.io/en/stable/installation/).  
 
-After you fullfil the previous requirements, run:
+Once Pip is installed, run the following command to install the dependencies:  
 
+```bash
+pip install -r requirements.txt
+```  
 
-```
-python create_job.py
-```
+---
 
+### Configure Job and AI  
 
-This command above will deploy the job in the TinyDB, a simple NoSQL database.
+1. **Download CVs:**  
+   Update the Google Drive API Key and ensure dependencies are installed. Then, run:  
 
-#
+   ```bash
+   python download_cv.py
+   ```  
 
-You can configure the AI analysis changing the `ai.py` file.
+   This will download all CVs from the configured Google Drive folder into the `/curriculos` directory.  
 
-In this file you have some cool functions, like:
-#
-*resume_cv*: configurable prompt with some major infos that you want to display
-#
-*generate_score*: configurable prompt which will evaluate the weight of each information
-#
-*generate_opnion*: configurable prompt that generate an opnion about the CVs
+2. **Create Job Announcement:**  
+   Edit the `create_job.py` file and define the following variables:  
+   - **name:** Job title.  
+   - **activities:** Job responsibilities.  
+   - **prerequisites:** Minimum requirements.  
+   - **differentials:** Nice-to-have qualifications.  
 
-## Run Project
+   After updating, run:  
 
-- [X] Config Google Drive API Key
-- [X] Install Dependencies
-- [x] Configure JOB and AI
+   ```bash
+   python create_job.py
+   ```  
 
-After all things have already been configured, run:
+   This will store the job announcement in TinyDB, a lightweight NoSQL database.  
 
-```
-python import_cv.py
-```
+3. **Configure AI Analysis:**  
+   Open `ai.py` and explore the following functions:  
+   - `resume_cv`: Customizable prompt to display key information.  
+   - `generate_score`: Customizable prompt to evaluate the weight of each CV's details.  
+   - `generate_opinion`: Configurable prompt to provide an opinion about each CV.  
 
-This will use the *Groq API* to run the *llama-3.1-70b-versatile* to analyse the CVs from the `/curriculos` folder
+---
 
-After that, the analyse is complete. We use Streamlit for Frontend so, run:
+### Run the Project  
 
+Once all configurations are complete:  
 
-```
-streamlit run app.py
-```
+1. **Analyze CVs:**  
+   Run the following command:  
 
+   ```bash
+   python import_cv.py
+   ```  
 
-<img width="643" alt="image" src="https://github.com/user-attachments/assets/53cb8dfe-93b2-4a0d-968c-71492decfb57">
+   This uses the **Groq API** to analyze CVs in the `/curriculos` folder with the `llama-3.1-70b-versatile` model.  
 
-#
+2. **Start the Frontend:**  
+   The project uses Streamlit for the frontend. Launch it by running:  
 
+   ```bash
+   streamlit run app.py
+   ```  
 
-Then you just acces you localhost:8501
+   Access the frontend at [localhost:8501](http://localhost:8501).  
 
-## Some Images from the Frontend
+---
 
+## Screenshots  
 
-<img width="1380" alt="image" src="https://github.com/user-attachments/assets/3e6242c7-54e8-414f-8397-1cd3ec3e0329">
+### Frontend Overview  
+<img width="1380" alt="image" src="https://github.com/user-attachments/assets/3e6242c7-54e8-414f-8397-1cd3ec3e0329">  
 
-#
+### Detailed View  
+<img width="1387" alt="image" src="https://github.com/user-attachments/assets/37e92bbd-fd78-4195-8302-8a4a243b5b1a">  
 
-<img width="1387" alt="image" src="https://github.com/user-attachments/assets/37e92bbd-fd78-4195-8302-8a4a243b5b1a">
+### Results Summary  
+<img width="1395" alt="image" src="https://github.com/user-attachments/assets/3e9925f7-983b-46dd-8c27-15ca468bdfbd">  
 
-#
+---
 
-<img width="1395" alt="image" src="https://github.com/user-attachments/assets/3e9925f7-983b-46dd-8c27-15ca468bdfbd">
+# Future Development
 
+1. **Integrate with other AI models**: The system could be enhanced by integrating with other AI models, such as natural language processing (NLP) or machine learning algorithms, to improve the accuracy of candidate scoring.
+2. **Add more features**: The system could be expanded to include more features, such as automated resume screening, skills testing, or interview scheduling.
+3. **Improve user interface**: The UI could be improved to provide a more user-friendly experience for users, including features such as filtering, sorting, and searching.
