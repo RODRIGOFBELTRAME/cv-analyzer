@@ -14,7 +14,7 @@ Acompanhar e ajudar o time a executar as estratégias definidas
 Reportar resultados e projeções dos seus KPIs
 '''
 
-prequisites = '''
+prerequisites = ''' 
 Experiência comprovada como Gestor de Vendas, Líder Comercial, Diretor Comercial ou afins
 Experiência comprovada em Vendas B2B (business to business)
 Experiência em empresas de Infoprodutos
@@ -34,7 +34,7 @@ job = Job(
     id=str(uuid.uuid4()),
     name=name,
     main_activities=activities,
-    prerequisites=prequisites,
+    prerequisites=prerequisites,  
     differentials=differentials,
 )
 
