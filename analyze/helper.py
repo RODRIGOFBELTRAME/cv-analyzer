@@ -50,9 +50,21 @@ def extract_data_analysis(resum_cv, job_id, resum_id, score) -> Analysis:
 def get_pdf_paths(directory):
     pdf_files = []
 
+    # Verifica se o diretório existe
+    if not os.path.exists(directory):
+        print(f"O diretório {directory} não existe.")
+        return pdf_files
+
+    # Percorre todos os arquivos no diretório especificado
     for filename in os.listdir(directory):
-        if filename.endswith('.pdf'):
+        if filename.lower().endswith('.pdf'):
             file_path = os.path.join(directory, filename)
             pdf_files.append(file_path)
+
+    # Se nenhum arquivo PDF for encontrado, imprime uma mensagem
+    if not pdf_files:
+        print(f"Nenhum arquivo PDF encontrado em {directory}")
+    else:
+        print(f"Encontrados {len(pdf_files)} arquivos PDF em {directory}")
 
     return pdf_files
