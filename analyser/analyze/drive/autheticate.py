@@ -3,6 +3,9 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 
+
+
+
 # Defina o escopo de acesso que você precisa
 # Estes escopos permitem ler e modificar arquivos no Google Drive
 SCOPES = [
@@ -10,6 +13,7 @@ SCOPES = [
     "https://www.googleapis.com/auth/drive.readonly",
     "https://www.googleapis.com/auth/drive.metadata.readonly"
 ]
+
 
 # Inicialize a variável de credenciais
 creds = None
