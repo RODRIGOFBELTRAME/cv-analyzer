@@ -1,5 +1,5 @@
 import re, uuid, os
-import fitz 
+import pymupdf as fitz
 from models.analysis import Analysis
 
 def read_uploaded_file(file_path):
