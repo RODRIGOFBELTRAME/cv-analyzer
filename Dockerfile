@@ -18,7 +18,7 @@ RUN python analyze/create_job.py
 RUN python analyze/import_cv.py
 
 # Exponha a porta do Streamlit
-EXPOSE 8501
+EXPOSE 8080
 
 # Comando para iniciar a aplicação
-CMD ["streamlit", "run", "analyze/app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+CMD ["streamlit", "run", "analyze/app.py", "--server.port=8080", "--server.address=0.0.0.0"]
