@@ -17,7 +17,7 @@ ai = GroqClient()
 
 # Obter os caminhos dos arquivos PDF contendo os currículos
 # Esta função retorna uma lista de caminhos de arquivos dentro da pasta 'curriculos'
-cv_paths = get_pdf_paths(directory='../analyze/drive/curriculos/')
+cv_paths = get_pdf_paths(directory='../app/analyze/drive/curriculos/')
 
 # Iterar sobre cada caminho de arquivo de currículo na lista
 for path in cv_paths:

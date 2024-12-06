@@ -25,7 +25,7 @@ class GroqClient:
             
             {cv}
 
-            Por favor, gere um resumo do currículo fornecido, formatado em Markdown, seguindo rigorosamente o modelo abaixo. **Não adicione seções extras, tabelas ou qualquer outro tipo de formatação diferente da especificada.** Preencha cada seção com as informações relevantes, garantindo que o resumo seja preciso e focado.
+            Por favor, gere um resumo do currículo fornecido, formatado em Markdown, seguindo rigorosamente o modelo abaixo. **Não adicione seções extras, tabelas ou qualquer outro tipo de formatação diferente da especificada.** Preencha cada seção com as informações relevantes, garantindo que o resumo seja preciso e focado. Lembre-se não esqueça de colocar os "titulos" das seções.
 
             **Formato de Output Esperado:**
 
@@ -121,10 +121,15 @@ class GroqClient:
             if '/' in score_str:
                 score_str = score_str.split('/')[0]
             
-            # Retornar a pontuação como um número float
-            return float(score_str.replace(',', '.'))
+            try:
+                # Retornar a pontuação como um número float
+                return float(score_str.replace(',', '.'))
+            except ValueError as e:
+                print(f"Erro ao converter score: {score_str} - {e}")
+                return None
         
-        # Retornar None se não encontrar a pontuação
+        # Log se não encontrar a pontuação
+        print("Pontuação não encontrada na resposta.")
         return None
 
     def generate_opnion(self, cv, job):

@@ -8,7 +8,7 @@ WORKDIR /app
 COPY requirements.txt .
 
 # Instale as dependências
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -r requirements.txt
 
 # Copie o restante do código da aplicação
 COPY . .
@@ -18,7 +18,7 @@ RUN python analyze/create_job.py
 RUN python analyze/import_cv.py
 
 # Exponha a porta do Streamlit
-EXPOSE 8080
+EXPOSE 8051
 
 # Comando para iniciar a aplicação
-CMD ["streamlit", "run", "analyze/app.py", "--server.port=8080", "--server.address=0.0.0.0"]
+CMD ["streamlit", "run", "analyze/app.py", "--server.port=8051", "--server.enableCORS=false", "--browser.serverAddress=0.0.0.0"]
