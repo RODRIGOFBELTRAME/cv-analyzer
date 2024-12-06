@@ -3,6 +3,7 @@
 This is a Python-based recruitment analysis system that uses various technologies to process resumes, extract relevant information, and provide a scoring system for candidate suitability. The system uses Google Drive for storing resumes and other files, and relies on a custom-built AI model to analyze resumes and provide insights.
 
 ---
+
 # How It Works
 
 1. The system uses Google Drive to store PDF files.
@@ -45,6 +46,42 @@ GROQ_API_KEY='YOUR_API_KEY'
 **Ensure your *.gitignore* is properly configured to exclude `.env` files.**  
 
 ---
+
+# Run the Project
+
+You have two options to run the application:
+
+### Option 1: With Docker
+
+<details>
+<summary>Click here for Docker instructions</summary>
+
+## YOU CAN CHANGE THE JOB REQUIREMENTS AND ANALYSIS IN THE SOURCE CODE
+
+1. **Build the Docker Image:**  
+   Navigate to the root directory of the project and run:
+
+   ```bash
+   docker build -t cv-analyzer .
+   ```
+
+2. **Run the Docker Container:**  
+   Run the container with:
+
+   ```bash
+   docker run -p 8501:8501 cv-analyzer
+   ```
+
+   This will start the application inside a Docker container and map port 8501 from the container to your local machine.
+
+   Access the frontend at [localhost:8501](http://localhost:8501).
+
+</details>
+
+### Option 2: Without Docker
+
+<details>
+<summary>Click here for non-Docker instructions</summary>
 
 ### Install Dependencies  
 
@@ -96,7 +133,7 @@ pip install -r requirements.txt
 
 ### Run the Project  
 
-Once all configurations are complete:  
+Once all configurations are complete:
 
 1. **Analyze CVs:**  
    Run the following command:  
@@ -118,15 +155,19 @@ Once all configurations are complete:
 
 ---
 
-## Screenshots  
+</details>
 
-### Frontend Overview  
+---
+
+# Screenshots  
+
+## Frontend Overview  
 <img width="1380" alt="image" src="https://github.com/user-attachments/assets/3e6242c7-54e8-414f-8397-1cd3ec3e0329">  
 
-### Detailed View  
+## Detailed View  
 <img width="1387" alt="image" src="https://github.com/user-attachments/assets/37e92bbd-fd78-4195-8302-8a4a243b5b1a">  
 
-### Results Summary  
+## Results Summary  
 <img width="1395" alt="image" src="https://github.com/user-attachments/assets/3e9925f7-983b-46dd-8c27-15ca468bdfbd">  
 
 ---
